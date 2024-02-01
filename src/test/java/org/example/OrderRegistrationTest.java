@@ -34,6 +34,7 @@ public class OrderRegistrationTest extends BaseTest {
         return new Object[][] {
                 {"Андрей", "Белый", "Москва, ул Андрея Белого", "Тургеневская", "+79059059050", "1 февраля 2024", 7, "grey", "домофон не работает"},
                 {"Александр", "Превосходный", "Москва, Козицкий переулок", "Лубянка", "56565656565", "1 февраля 2024", 3, "black", "domofon po nomeru kvartiry"},
+                {"Ирина", "Иванова", "Балашиха, улица Советская", "Новокосино", "89995556644", "15 марта 2024", 5, "grey", "позвоните за час"},
                 {"Ivan", "Kazakov", "Korolyov, Zvezdny prospect", "Комсомольсская", "+79059059", "4 февраля 2024", 1, "grey", "-"},
         };
     }
@@ -50,16 +51,10 @@ public class OrderRegistrationTest extends BaseTest {
         objOrderData.waitCreatedOrderWindow();
     }
 
-    @Test // заказ через кнопку "Заказать" внизу главной страницы
+    @Test // заказ через кнопку "Заказать" внизу главной страницы (клик и ожидание загрузки формы заказа)
     public void orderRegistrationBottomButton() {
         StartOrderButton objStartOrder = new StartOrderButton(driver);
         objStartOrder.clickBottomOrderButton(); // клик на кнопку "Заказать" внизу главной страницы
-        OrderClientData objClientData = new OrderClientData(driver);
-        objClientData.setClientData (name, surname, address, metroStation, phoneNumber);
-        OrderData objOrderData = new OrderData(driver);
-        objOrderData.setData (date, rentalPeriod, color, comment);
-        objOrderData.clickConfirmationButton();
-        objOrderData.waitCreatedOrderWindow();
-
+        objStartOrder.waitOrderForm();
     }
 }

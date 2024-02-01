@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
 // класс кнопок "Заказать"
@@ -28,5 +29,9 @@ public class StartOrderButton extends BasePage {
         WebElement searchOrderButton = driver.findElement(bottomOrderButton);
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", searchOrderButton);
         driver.findElement(bottomOrderButton).click();
+    }
+    //ожидание загрузки формы заказа
+    public void waitOrderForm() {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.className("Order_Content__bmtHS"))));
     }
 }

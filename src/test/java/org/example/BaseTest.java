@@ -8,6 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import static org.example.Constants.URL_YANDEX_SCOOTER;
+
 public class BaseTest {
     protected WebDriver driver;
 
@@ -16,7 +18,7 @@ public class BaseTest {
         String browser = System.getenv("BROWSER");
         driver = getDriver(browser == null ? "chrome" : browser);
 
-        driver.get("https://qa-scooter.praktikum-services.ru/");
+        driver.get(URL_YANDEX_SCOOTER);
 
         setCookie(new Cookie("Cartoshka", "true"));
         setCookie(new Cookie("Cartoshka-legacy", "true"));
