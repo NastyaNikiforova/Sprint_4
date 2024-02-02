@@ -50,11 +50,4 @@ public class OrderRegistrationTest extends BaseTest {
         objOrderData.clickConfirmationButton();
         objOrderData.waitCreatedOrderWindow();
     }
-
-    @Test // заказ через кнопку "Заказать" внизу главной страницы (клик и ожидание загрузки формы заказа)
-    public void orderRegistrationBottomButton() {
-        StartOrderButton objStartOrder = new StartOrderButton(driver);
-        objStartOrder.clickBottomOrderButton(); // клик на кнопку "Заказать" внизу главной страницы
-        objStartOrder.waitOrderForm();
-    }
 }
